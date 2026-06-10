@@ -1,6 +1,6 @@
 # Machine Learning from Scratch
 
-## Day 1 Notebook - Optimization Algorithms from Scratch
+## 1. Calculus Notebook - Optimization Algorithms from Scratch
 
 In this notebook, I implemented **Gradient Descent**, **Stochastic Gradient Descent (SGD)**, **Momentum-Based Descent**, **RMSProp**, and the **Adam Optimizer** completely from scratch. 
 
@@ -29,3 +29,36 @@ Because calculating the true second derivative is too computationally expensive,
 ![Optimizers](./Calculus_Gradient_Descent/optimizers.png)
 
 ---
+## 2. Linear Algebra Notebook - Dimensionality Reduction & Projections from Scratch
+
+In this notebook, I implemented **Principal Component Analysis (PCA)**, **Singular Value Decomposition (SVD)**, and **Kernel PCA (KPCA) with an RBF Kernel** completely from scratch. 
+
+The goal of this project was to look beyond black-box libraries to master how high-dimensional spaces are compressed, how matrix multiplications act as geometric projections, and how non-linear data structures can be mathematically "unrolled."
+
+---
+
+## What I Learned
+
+### 1. Matrix Multiplications as Coordinate Perspectives
+Through building PCA from scratch, I cleared up a massive misconception about dimensionality reduction:
+* Performing a matrix multiplication like $X_{\text{projected}} = X_{\text{centered}} \cdot V$ does not physically slam, smash, or move data points across a graph. The original spatial relationships between points stay identical.
+* Instead, eigenvectors act as full, pre-existing structural paths running through the data cloud. Multiplying by them simply rotates your perspective (a Change of Basis), mapping your data out of its raw features and using the cloud's natural axes of maximum variance as the new horizontal and vertical grid lines.
+
+
+
+### 2. The Computational Efficiency of the SVD Path
+While classic PCA solves for the eigenvectors of a squared Covariance Matrix ($\frac{X^T X}{n-1}$), this approach is highly inefficient for real-world high-dimensional data (like 64-pixel facial images or massive genomics tables):
+* For a dataset with 50,000 features, building a covariance matrix forces a computer to build a staggering $50,000 \times 50,000$ grid in RAM before calculations even begin.
+* Passing mean-centered data directly into **Singular Value Decomposition (SVD)** bypasses the covariance matrix entirely. SVD's right singular vectors ($V^T$) map identically to PCA's eigenvectors, but calculate the structural spine of the data in a fraction of the memory, making it the industry engine under the hood of frameworks like `scikit-learn`.
+
+
+
+### 3. Slicing Through Curvature with the Kernel Trick
+Linear PCA fails completely on curved, non-linear structures like the Swiss Roll because linear projections inevitably smash separate, overlapping layers into the exact same low-dimensional coordinates, permanently scrambling the information.
+* **Kernel PCA (KPCA)** resolves this by bypassing the original space and constructing an $n \times n$ similarity grid using a Radial Basis Function (RBF Kernel).
+* By tracking only localized similarity gradients, KPCA maps the data into an infinite-dimensional space where the curvature of the roll is straightened out into a linear spine, allowing standard linear algebra tools to cleanly "unroll" a non-linear universe.
+
+
+
+#### Dimensionality Reduction Comparisons
+![PCA Projections](./Linear_Algebra_PCA_SVD/pca_projections.png)
