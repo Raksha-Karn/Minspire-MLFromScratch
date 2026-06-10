@@ -1,6 +1,6 @@
 # Machine Learning from Scratch
 
-## Calculus Notebook - Optimization Algorithms from Scratch
+## 1. Calculus Notebook - Optimization Algorithms from Scratch
 
 In this notebook, I implemented **Gradient Descent**, **Stochastic Gradient Descent (SGD)**, **Momentum-Based Descent**, **RMSProp**, and the **Adam Optimizer** completely from scratch. 
 
@@ -26,11 +26,10 @@ Because calculating the true second derivative is too computationally expensive,
 * Combined with directional momentum (`m_hat`) in the numerator to smooth out noisy trajectories, Adam delivers the ultimate balance of **stability, noise filtering, and computational efficiency**, making it the undisputed default optimizer for modern deep learning.
 
 #### Optimizer Comparisons
-![Optimizers](./Day_1/optimizers.png)
+![Optimizers](./Calculus_Gradient_Descent/optimizers.png)
 
 ---
-
-## Linear Algebra Notebook - Dimensionality Reduction & Projections from Scratch
+## 2. Linear Algebra Notebook - Dimensionality Reduction & Projections from Scratch
 
 In this notebook, I implemented **Principal Component Analysis (PCA)**, **Singular Value Decomposition (SVD)**, and **Kernel PCA (KPCA) with an RBF Kernel** completely from scratch. 
 
